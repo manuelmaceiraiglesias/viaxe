@@ -1,0 +1,18 @@
+#raiz{
+-fx-background-image: url("ponte.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+}
+.button{
+/* a altura esta limitada por constraints do contenedor e por eso non colle a forma redonda,
+tamen le faltaria un pref hight*/
+-fx-background-radius: 50;
+-fx-pref-width: 120;
+-fx-background-color:blue;
+-fx-text-fill:pink;
+}
+Label{
+-fx-font-family:"Comic Sans MS";
+-fx-border-color:lightgreen;
+-fx-background-color:lightgreen;
+}

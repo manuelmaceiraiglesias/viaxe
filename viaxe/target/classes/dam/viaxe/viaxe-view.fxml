@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox id="raiz" fx:id="raiz" alignment="CENTER" prefHeight="539.0" prefWidth="631.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.viaxe.ViaxeControlador">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+   <children>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="DISTANCIA">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Label>
+            <Label text="DESNIVEL" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Label>
+            <Label text="LUGAR" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Label>
+            <TextField fx:id="txtdistancia" GridPane.columnIndex="1" />
+            <TextField fx:id="txtdesnivel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtlugar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="datepicker" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="2000.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="FECHA" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="443.0">
+         <children>
+            <Button fx:id="btengadir" mnemonicParsing="false" onAction="#engadir" text="ENGADIR">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Button>
+            <Button fx:id="btver" mnemonicParsing="false" onAction="#vertodo" text="VER TODO">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btbuscar" mnemonicParsing="false" onAction="#buscarLugar" text="BUSCAR LUGAR">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Button>
+            <TextField fx:id="txtbuscar" />
+         </children>
+      </HBox>
+      <TableView fx:id="tabla" prefHeight="307.0" prefWidth="443.0">
+        <columns>
+          <TableColumn fx:id="colfecha" prefWidth="75.0" text="FECHA" />
+          <TableColumn fx:id="coldistancia" prefWidth="75.0" text="DISTANCIA" />
+          <TableColumn fx:id="coldesnivel" prefWidth="75.0" text="DESNIVEL" />
+          <TableColumn fx:id="collugar" prefWidth="75.0" text="LUGAR" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</VBox>
