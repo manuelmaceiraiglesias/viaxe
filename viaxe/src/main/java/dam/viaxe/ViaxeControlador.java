@@ -77,6 +77,9 @@ public class ViaxeControlador implements Initializable {
         }
     }
 
+    /**
+     * comproba o textfield buscar e busca todalas entradas que conteñan ese string no campo comentario
+     */
     public void buscarLugar(ActionEvent actionEvent) {
 
         try {
@@ -94,12 +97,18 @@ public class ViaxeControlador implements Initializable {
 
     }
 
+    /**
+     * enche a tabla con todolos viaxes da base de datos
+     */
     public void ponerTabla() {
         lista.clear();
         lista.addAll(ViaxeRepositorio.verViaxes());
         tabla.setItems(lista);
     }
 
+    /**
+     * lanza unha xanela modal informando dun erro
+     */
     public void errar() {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle("Error");
@@ -107,6 +116,9 @@ public class ViaxeControlador implements Initializable {
         alerta.showAndWait();
     }
 
+    /**
+     * lanza unha xanela modal informando dunha operacion exitosa
+     */
     public void avisar() {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Información");

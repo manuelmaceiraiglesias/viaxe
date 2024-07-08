@@ -5,7 +5,7 @@
 }
 .button{
 /* a altura esta limitada por constraints do contenedor e por eso non colle a forma redonda,
-tamen le faltaria un pref hight*/
+tamen lle faltaria un pref hight*/
 -fx-background-radius: 50;
 -fx-pref-width: 120;
 -fx-background-color:blue;
@@ -16,3 +16,18 @@ Label{
 -fx-border-color:lightgreen;
 -fx-background-color:lightgreen;
 }
+
+
+.table-view .column-header{ /*a cabeceira da taboa co sort incluido*/
+-fx-background-color:lightgreen;
+}
+.table-view .filler{ /*a esquna superior dereita da taboa*/
+-fx-background-color:lightgreen;
+}
+/*.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, azure;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, aquamarine;
+}*/

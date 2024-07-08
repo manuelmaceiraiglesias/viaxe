@@ -3,8 +3,10 @@ package dam.viaxe;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+
 /**
- * Esta clase proporciona as sesions de hibernate*/
+ * Esta clase proporciona as sesions de hibernate
+ */
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
