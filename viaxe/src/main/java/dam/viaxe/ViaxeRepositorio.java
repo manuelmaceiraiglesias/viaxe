@@ -60,4 +60,21 @@ public class ViaxeRepositorio {
             System.out.println(e.getMessage());
         }
     }
+    /**
+     * @param v e o viaxe que se modificou
+     */
+    public static void modificar(Viaxe v){
+        Transaction trans=null;
+        try {
+            Session se = HibernateUtil.getSessionFactory().openSession();
+            trans = se.beginTransaction();
+            se.merge(v);
+            trans.commit();
+        } catch (Exception e) {
+            if (trans != null) {
+                trans.rollback();
+            }
+            System.out.println(e.getMessage());
+        }
+    }
 }

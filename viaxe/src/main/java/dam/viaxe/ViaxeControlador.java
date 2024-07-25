@@ -3,13 +3,27 @@ package dam.viaxe;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.util.Callback;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ViaxeControlador implements Initializable {
@@ -23,6 +37,7 @@ public class ViaxeControlador implements Initializable {
     public TableColumn<Viaxe, Double> coldistancia;
     public TableColumn<Viaxe, Integer> coldesnivel;
     public TableColumn<Viaxe, String> collugar;
+    public TableColumn<Viaxe, Void> colboton;
     public DatePicker datepicker;
     public TextField txtbuscar;
     public Button btbuscar;
@@ -34,10 +49,17 @@ public class ViaxeControlador implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+
+        } catch (Exception e) {
+            errar();
+            System.out.println(e.getMessage());
+        }
         colfecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         coldistancia.setCellValueFactory(new PropertyValueFactory<>("distancia"));
         coldesnivel.setCellValueFactory(new PropertyValueFactory<>("desnivel"));
         collugar.setCellValueFactory(new PropertyValueFactory<>("comentario"));
+        addButtonToTable();
         ponerTabla();
     }
 
@@ -124,6 +146,58 @@ public class ViaxeControlador implements Initializable {
         alerta.setTitle("Información");
         alerta.setHeaderText("Viaje añadido");
         alerta.showAndWait();
+    }
+
+    private void addButtonToTable() {
+        Callback<TableColumn<Viaxe, Void>, TableCell<Viaxe, Void>> cellFactory = new Callback<TableColumn<Viaxe, Void>, TableCell<Viaxe, Void>>() {
+            @Override
+            public TableCell<Viaxe, Void> call(final TableColumn<Viaxe, Void> param) {
+                final TableCell<Viaxe, Void> cell = new TableCell<Viaxe, Void>() {
+                    private final Button btn = new Button("Editar");
+                    private final ImageView imageView = new ImageView(getClass().getResource("editar.png").toExternalForm());
+
+                    {   imageView.setFitHeight(20);
+                        imageView.setFitWidth(20);
+                        btn.setStyle("-fx-background-color:transparent;-fx-text-fill:black;");
+                        btn.setGraphic(imageView);
+                        btn.setOnAction((ActionEvent event) -> {
+                            try{
+                                Viaxe v = getTableView().getItems().get(getIndex());
+                                FXMLLoader fxmlLoader = new FXMLLoader(ViaxeAplicacion.class.getResource("editor.fxml"));
+                                Editor editor=new Editor(); //uso un editor manual para engadirlle o viaxe
+                                editor.setViaxe(v);
+                                fxmlLoader.setController(editor);
+                                Scene scene = new Scene(fxmlLoader.load());
+                                Stage stage = new Stage();
+                                stage.setTitle("Editor");
+                                stage.setScene(scene);
+                                //cambia o icono da ventana
+                                stage.getIcons().add(new Image(Objects.requireNonNull(ViaxeAplicacion.class.getResourceAsStream("holopreico.png"))));
+                                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("estilo.css")).toExternalForm());
+                                stage.initModality(Modality.APPLICATION_MODAL);
+                                stage.showAndWait();
+                                ponerTabla();
+                            }catch (Exception e){
+                                System.out.println(e.getMessage());
+                            }
+
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colboton.setCellFactory(cellFactory);
     }
 
 }

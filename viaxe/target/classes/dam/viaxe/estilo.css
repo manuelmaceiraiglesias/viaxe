@@ -21,7 +21,7 @@ Label{
 .table-view .column-header{ /*a cabeceira da taboa co sort incluido*/
 -fx-background-color:lightgreen;
 }
-.table-view .filler{ /*a esquna superior dereita da taboa*/
+.table-view .filler{ /*a esquina superior dereita da taboa*/
 -fx-background-color:lightgreen;
 }
 /*.table-row-cell{
