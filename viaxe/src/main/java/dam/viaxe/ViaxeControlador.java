@@ -158,7 +158,7 @@ public class ViaxeControlador implements Initializable {
 
                     {   imageView.setFitHeight(20);
                         imageView.setFitWidth(20);
-                        btn.setStyle("-fx-background-color:transparent;-fx-text-fill:black;");
+                        btn.setStyle("-fx-background-color:transparent;-fx-text-fill:black;-fx-pref-width: 100;");
                         btn.setGraphic(imageView);
                         btn.setOnAction((ActionEvent event) -> {
                             try{
@@ -174,8 +174,9 @@ public class ViaxeControlador implements Initializable {
                                 //cambia o icono da ventana
                                 stage.getIcons().add(new Image(Objects.requireNonNull(ViaxeAplicacion.class.getResourceAsStream("holopreico.png"))));
                                 scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("estilo.css")).toExternalForm());
+                                stage.setResizable(false);
                                 stage.initModality(Modality.APPLICATION_MODAL);
-                                stage.showAndWait();
+                                stage.showAndWait();//para aqui e asi podo chamar depois a ponertatabla para actualizar
                                 ponerTabla();
                             }catch (Exception e){
                                 System.out.println(e.getMessage());

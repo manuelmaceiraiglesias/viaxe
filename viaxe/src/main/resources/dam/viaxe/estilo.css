@@ -3,6 +3,11 @@
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
 }
+#modal{
+-fx-background-image: url("ulla.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+}
 .button{
 /* a altura esta limitada por constraints do contenedor e por eso non colle a forma redonda,
 tamen lle faltaria un pref hight*/
@@ -13,16 +18,16 @@ tamen lle faltaria un pref hight*/
 }
 Label{
 -fx-font-family:"Comic Sans MS";
--fx-border-color:lightgreen;
--fx-background-color:lightgreen;
+-fx-border-color:lightcoral;
+-fx-background-color:lightcoral;
 }
 
 
 .table-view .column-header{ /*a cabeceira da taboa co sort incluido*/
--fx-background-color:lightgreen;
+-fx-background-color:lightcoral;
 }
 .table-view .filler{ /*a esquina superior dereita da taboa*/
--fx-background-color:lightgreen;
+-fx-background-color:lightcoral;
 }
 /*.table-row-cell{
     -fx-background-color: -fx-table-cell-border-color, azure;

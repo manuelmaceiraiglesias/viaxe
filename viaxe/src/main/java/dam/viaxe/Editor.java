@@ -21,12 +21,16 @@ public class Editor implements Initializable {
     public DatePicker datepicker;
     public Button btmodificar;
     public Button btcancelar;
-    public VBox modal;
-    private Viaxe viaxe;
+    public VBox modal; //existe polo css
+    private Viaxe viaxe;  //non uso setuserdata, se non un controlador manual
+
+    /**
+     * enche os campos de texto e o datepicker cos datos do viaxe a modificar
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtdistancia.setText(""+viaxe.getDistancia());
-        txtdesnivel.setText(""+viaxe.getDesnivel());
+        txtdistancia.setText("" + viaxe.getDistancia());
+        txtdesnivel.setText("" + viaxe.getDesnivel());
         txtlugar.setText(viaxe.getComentario());
         datepicker.setValue(viaxe.getFecha());
     }
@@ -38,6 +42,10 @@ public class Editor implements Initializable {
     public void setViaxe(Viaxe viaxe) {
         this.viaxe = viaxe;
     }
+
+    /**
+     * permite modificar un viaxe
+     */
     public void modificar(ActionEvent actionEvent) {
         double distancia;
         int desnivel;
@@ -58,8 +66,8 @@ public class Editor implements Initializable {
             Viaxe v = new Viaxe(fecha, distancia, desnivel, lugar);
             ViaxeRepositorio.modificar(v);
             avisar();
-            Scene scene=btmodificar.getScene();
-            Stage stage=(Stage) scene.getWindow();
+            Scene scene = btmodificar.getScene();
+            Stage stage = (Stage) scene.getWindow();
             stage.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -67,9 +75,12 @@ public class Editor implements Initializable {
         }
     }
 
+    /**
+     * sae sen facer nada
+     */
     public void cancelar(ActionEvent actionEvent) {
-        Scene scene=btcancelar.getScene();
-        Stage stage=(Stage) scene.getWindow();
+        Scene scene = btcancelar.getScene();
+        Stage stage = (Stage) scene.getWindow();
         stage.close();
     }
 
@@ -90,7 +101,7 @@ public class Editor implements Initializable {
     public void avisar() {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Información");
-        alerta.setHeaderText("Viaje añadido");
+        alerta.setHeaderText("Viaje modificado");
         alerta.showAndWait();
     }
 }

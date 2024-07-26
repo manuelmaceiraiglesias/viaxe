@@ -51,7 +51,7 @@
                 <HBox.margin>
                     <Insets right="20.0" />
                 </HBox.margin></Button>
-            <Button fx:id="btver" mnemonicParsing="false" onAction="#cancelar" text="CANCELAR">
+            <Button fx:id="btcancelar" mnemonicParsing="false" onAction="#cancelar" text="CANCELAR">
                 <HBox.margin>
                     <Insets right="20.0" />
                 </HBox.margin>
