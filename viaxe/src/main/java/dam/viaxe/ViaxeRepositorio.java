@@ -15,7 +15,7 @@ public class ViaxeRepositorio {
         List<Viaxe> lista = new ArrayList<>();
         try {
             Session se = HibernateUtil.getSessionFactory().openSession();
-            Query query = se.createQuery("select v from Viaxe v");
+            Query query = se.createQuery("select v from Viaxe v",Viaxe.class);
             lista = (List<Viaxe>) query.getResultList();
             se.close();
         } catch (Exception e) {
@@ -33,7 +33,7 @@ public class ViaxeRepositorio {
         try {
             Session se = HibernateUtil.getSessionFactory().openSession();
             String busqueda = "%" + cad + "%";
-            Query query = se.createQuery("select v from Viaxe v where v.comentario like :busqueda");
+            Query query = se.createQuery("select v from Viaxe v where v.comentario like :busqueda",Viaxe.class);
             query.setParameter("busqueda", busqueda);
             lista = (List<Viaxe>) query.getResultList();
             se.close();

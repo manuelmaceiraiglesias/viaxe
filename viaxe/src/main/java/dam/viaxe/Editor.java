@@ -54,7 +54,7 @@ public class Editor implements Initializable {
         try {
             distancia = Double.parseDouble(txtdistancia.getText());
             desnivel = Integer.parseInt(txtdesnivel.getText());
-            lugar = txtlugar.getText();
+            lugar = txtlugar.getText().toLowerCase();
             if (lugar.isEmpty()) {
                 txtlugar.requestFocus();
                 throw new Exception("Lugar debe tener contenido");

@@ -81,7 +81,7 @@ public class ViaxeControlador implements Initializable {
         try {
             distancia = Double.parseDouble(txtdistancia.getText());
             desnivel = Integer.parseInt(txtdesnivel.getText());
-            lugar = txtlugar.getText();
+            lugar = txtlugar.getText().toLowerCase();
             if (lugar.isEmpty()) {
                 txtlugar.requestFocus();
                 throw new Exception("Lugar debe tener contenido");
@@ -93,6 +93,11 @@ public class ViaxeControlador implements Initializable {
             Viaxe v = new Viaxe(fecha, distancia, desnivel, lugar);
             ViaxeRepositorio.engadir(v);
             avisar();
+            txtdistancia.setText("");
+            txtdesnivel.setText("");
+            txtlugar.setText("");
+            datepicker.setValue(null);
+            ponerTabla();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             errar();
