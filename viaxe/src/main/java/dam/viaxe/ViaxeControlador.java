@@ -7,6 +7,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +25,7 @@ import javafx.util.converter.IntegerStringConverter;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -93,6 +96,14 @@ public class ViaxeControlador implements Initializable {
             Viaxe v = new Viaxe(fecha, distancia, desnivel, lugar);
             ViaxeRepositorio.engadir(v);
             avisar();
+          /*  GridPane gp =(GridPane)txtdistancia.getParent();
+            List<Node> nodes=gp.getChildren();  //alternativo para borrar con un bucle
+            for(Node nod:nodes){
+                if(nod instanceof TextField){
+                   TextField text=(TextField) nod;
+                   text.setText("");
+                }
+            }*/
             txtdistancia.setText("");
             txtdesnivel.setText("");
             txtlugar.setText("");

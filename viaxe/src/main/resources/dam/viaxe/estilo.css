@@ -16,6 +16,9 @@ tamen lle faltaria un pref hight*/
 -fx-background-color:blue;
 -fx-text-fill:pink;
 }
+.button:hover{
+-fx-background-color:darkblue;
+}
 Label{
 -fx-font-family:"Comic Sans MS";
 -fx-border-color:lightcoral;
